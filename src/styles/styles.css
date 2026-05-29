@@ -65,7 +65,20 @@
   --red:            #c00030;
 }
 
-/* ── 2. RESET & BASE ── */
+/* ── 2. ÍCONES LUCIDE ── */
+
+/* Tamanhos por contexto */
+.icon-logo   { width: 28px; height: 28px; color: var(--cyan); display: block; }
+.icon-section{ width: 16px; height: 16px; color: var(--cyan); vertical-align: middle; margin-right: 8px; position: relative; top: -1px; }
+.icon-card   { width: 20px; height: 20px; color: var(--cyan); flex-shrink: 0; }
+.icon-btn    { width: 14px; height: 14px; vertical-align: middle; margin-right: 5px; position: relative; top: -1px; }
+.icon-ship   { width: 18px; height: 18px; color: var(--cyan); display: block; }
+.icon-footer { width: 16px; height: 16px; vertical-align: middle; color: var(--cyan); margin-right: 4px; }
+
+/* Lucide SVGs herdam a cor via currentColor */
+svg[data-lucide] { stroke: currentColor; }
+
+/* ── 3. RESET & BASE ── */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;

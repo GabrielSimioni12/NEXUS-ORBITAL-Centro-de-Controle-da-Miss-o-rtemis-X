@@ -4,9 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NEXUS ORBITAL — Missão Ártemis-X</title>
+
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23050a14'/><path d='M16 4 C16 4 22 10 22 18 L19 18 L19 22 L13 22 L13 18 L10 18 C10 10 16 4 16 4Z' fill='%2300d4ff'/><circle cx='16' cy='14' r='2.5' fill='%23050a14'/><path d='M13 22 L11 27 L16 25 L21 27 L19 22Z' fill='%239b59ff'/></svg>" />
+
   <link rel="stylesheet" href="/src/styles/styles.css" />
-  <!-- Google Fonts: Orbitron (display) + Rajdhani (body) -->
+
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+ 
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 </head>
 <body id="body" class="dark-theme">
 
@@ -14,7 +20,10 @@
   <header id="main-header">
     <div class="header-left">
       <div class="logo-box">
-        <span class="logo-icon">⬡</span>
+        <!-- Ícone: hexágono / satélite representando a agência -->
+        <span class="logo-icon">
+          <i data-lucide="satellite" class="icon-logo"></i>
+        </span>
         <div>
           <span class="logo-title">NEXUS ORBITAL</span>
           <span class="logo-sub">Centro de Controle — FIAP Space Agency</span>
@@ -45,7 +54,7 @@
     <div class="header-right">
       <!-- Botão alternância de tema -->
       <button id="theme-toggle" class="btn-theme" onclick="toggleTheme()" title="Alternar Tema">
-        <span id="theme-icon">☀</span> TEMA
+        <i data-lucide="sun" id="theme-icon" class="icon-btn"></i> TEMA
       </button>
       <!-- Status geral da missão -->
       <div class="status-pill" id="global-status">
@@ -61,7 +70,10 @@
     <!-- ===== SEÇÃO: DASHBOARD ===== -->
     <section id="dashboard" class="section-dashboard">
       <div class="section-title-bar">
-        <h2>⬡ PAINEL DE TELEMETRIA</h2>
+        <h2>
+          <i data-lucide="layout-dashboard" class="icon-section"></i>
+          PAINEL DE TELEMETRIA
+        </h2>
         <span class="data-tag">ATUALIZAÇÃO EM TEMPO REAL</span>
       </div>
 
@@ -71,7 +83,7 @@
         <!-- Card Temperatura -->
         <article class="card card-temp" id="card-temp">
           <div class="card-header">
-            <span class="card-icon">🌡</span>
+            <i data-lucide="thermometer" class="icon-card"></i>
             <span class="card-label">TEMPERATURA CASCO</span>
           </div>
           <div class="card-value" id="temp-value">-187°C</div>
@@ -87,7 +99,7 @@
         <!-- Card Energia -->
         <article class="card card-energy" id="card-energy">
           <div class="card-header">
-            <span class="card-icon">⚡</span>
+            <i data-lucide="zap" class="icon-card"></i>
             <span class="card-label">NÍVEL DE ENERGIA</span>
           </div>
           <div class="card-value" id="energy-value">78%</div>
@@ -103,7 +115,7 @@
         <!-- Card Comunicação -->
         <article class="card card-comm" id="card-comm">
           <div class="card-header">
-            <span class="card-icon">📡</span>
+            <i data-lucide="radio" class="icon-card"></i>
             <span class="card-label">COMUNICAÇÃO</span>
           </div>
           <div class="card-value" id="comm-value">94%</div>
@@ -119,7 +131,7 @@
         <!-- Card Velocidade -->
         <article class="card card-speed" id="card-speed">
           <div class="card-header">
-            <span class="card-icon">🚀</span>
+            <i data-lucide="rocket" class="icon-card"></i>
             <span class="card-label">VELOCIDADE</span>
           </div>
           <div class="card-value" id="speed-value">47.200 km/h</div>
@@ -135,7 +147,7 @@
         <!-- Card Oxigênio -->
         <article class="card card-oxygen" id="card-oxygen">
           <div class="card-header">
-            <span class="card-icon">💨</span>
+            <i data-lucide="wind" class="icon-card"></i>
             <span class="card-label">O₂ CABINE</span>
           </div>
           <div class="card-value" id="oxygen-value">21.4%</div>
@@ -151,7 +163,7 @@
         <!-- Card Escudo -->
         <article class="card card-shield" id="card-shield">
           <div class="card-header">
-            <span class="card-icon">🛡</span>
+            <i data-lucide="shield-check" class="icon-card"></i>
             <span class="card-label">ESCUDO RADIAÇÃO</span>
           </div>
           <div class="card-value" id="shield-value">ATIVO</div>
@@ -164,22 +176,31 @@
           <div class="card-status ok" id="shield-status">INTEGRIDADE OK</div>
         </article>
 
-      </div><!-- /dashboard-grid -->
+      </div>
 
       <!-- Botões de ação -->
       <div class="action-bar">
-        <button class="btn-action btn-alert" onclick="simularAlerta()">⚠ SIMULAR ALERTA</button>
-        <button class="btn-action btn-update" onclick="atualizarDados()">🔄 ATUALIZAR DADOS</button>
-        <button class="btn-action btn-log" onclick="toggleLog()">📋 EXIBIR LOG</button>
+        <button class="btn-action btn-alert" onclick="simularAlerta()">
+          <i data-lucide="triangle-alert" class="icon-btn"></i> SIMULAR ALERTA
+        </button>
+        <button class="btn-action btn-update" onclick="atualizarDados()">
+          <i data-lucide="refresh-cw" class="icon-btn"></i> ATUALIZAR DADOS
+        </button>
+        <button class="btn-action btn-log" onclick="toggleLog()">
+          <i data-lucide="scroll-text" class="icon-btn"></i> EXIBIR LOG
+        </button>
       </div>
     </section>
 
-    <!-- ===== CONTEÚDO CENTRAL: aside + article ===== -->
+    <!-- ===== CONTEÚDO CENTRAL ===== -->
     <div class="mid-row">
 
       <!-- ===== ARTICLE: Mapa da missão / Progresso ===== -->
       <article id="mission-map" class="card-article">
-        <h3>🛸 ROTA DA MISSÃO</h3>
+        <h3>
+          <i data-lucide="navigation" class="icon-section"></i>
+          ROTA DA MISSÃO
+        </h3>
         <div class="route-map">
           <div class="route-node active">
             <span class="node-dot"></span>
@@ -187,7 +208,9 @@
           </div>
           <div class="route-line">
             <div class="route-progress" id="route-progress" style="width: 38%"></div>
-            <span class="route-ship" id="route-ship" style="left: 38%">🚀</span>
+            <span class="route-ship" id="route-ship" style="left: 38%">
+              <i data-lucide="rocket" class="icon-ship"></i>
+            </span>
           </div>
           <div class="route-node">
             <span class="node-dot dim"></span>
@@ -231,9 +254,12 @@
         </div>
       </article>
 
-      <!-- ===== ASIDE: Log de eventos ===== -->
+      <!-- ===== Log de eventos ===== -->
       <aside id="event-log" class="event-log-panel" style="display: none;">
-        <h3>📋 LOG DE EVENTOS</h3>
+        <h3>
+          <i data-lucide="scroll-text" class="icon-section"></i>
+          LOG DE EVENTOS
+        </h3>
         <ul class="log-list" id="log-list">
           <li class="log-item ok">
             <span class="log-time">08:14:02</span>
@@ -252,34 +278,36 @@
             <span class="log-msg">Correção de trajetória executada com sucesso.</span>
           </li>
         </ul>
-        <button class="btn-action btn-clear" onclick="limparLog()">🗑 LIMPAR LOG</button>
+        <button class="btn-action btn-clear" onclick="limparLog()">
+          <i data-lucide="trash-2" class="icon-btn"></i> LIMPAR LOG
+        </button>
       </aside>
 
-    </div><!-- /mid-row -->
+    </div>
 
-    <!-- ===== SEÇÃO: FORMULÁRIO ===== -->
+    <!-- ===== FORMULÁRIO ===== -->
     <section id="cadastro" class="section-form">
       <div class="section-title-bar">
-        <h2>⬡ REGISTRO DE MÓDULO / TRIPULANTE</h2>
+        <h2>
+          <i data-lucide="user-plus" class="icon-section"></i>
+          REGISTRO DE MÓDULO / TRIPULANTE
+        </h2>
         <span class="data-tag">ACESSO RESTRITO — NÍVEL 3</span>
       </div>
 
       <form id="mission-form" onsubmit="submitForm(event)">
 
         <div class="form-grid">
-          <!-- Nome -->
           <div class="form-group">
             <label for="nome">NOME COMPLETO *</label>
             <input type="text" id="nome" name="nome" placeholder="Ex: Dra. Ana Lima" required />
           </div>
 
-          <!-- ID da Missão -->
           <div class="form-group">
             <label for="id-missao">ID DA MISSÃO *</label>
             <input type="text" id="id-missao" name="id-missao" placeholder="Ex: AX-003" required />
           </div>
 
-          <!-- Cargo -->
           <div class="form-group">
             <label for="cargo">FUNÇÃO A BORDO *</label>
             <select id="cargo" name="cargo" required>
@@ -293,7 +321,6 @@
             </select>
           </div>
 
-          <!-- Módulo -->
           <div class="form-group">
             <label for="modulo">MÓDULO DESIGNADO *</label>
             <select id="modulo" name="modulo" required>
@@ -305,32 +332,31 @@
             </select>
           </div>
 
-          <!-- Data de embarque -->
           <div class="form-group">
             <label for="embarque">DATA DE EMBARQUE</label>
             <input type="date" id="embarque" name="embarque" />
           </div>
 
-          <!-- Nível de autorização -->
           <div class="form-group">
             <label for="nivel">NÍVEL DE AUTORIZAÇÃO</label>
             <input type="number" id="nivel" name="nivel" min="1" max="5" placeholder="1 a 5" />
           </div>
         </div>
 
-        <!-- Observações -->
         <div class="form-group full-width">
           <label for="obs">OBSERVAÇÕES DA MISSÃO</label>
           <textarea id="obs" name="obs" rows="4" placeholder="Descreva equipamentos, objetivos específicos ou condições especiais..."></textarea>
         </div>
 
-        <!-- Botão submit -->
         <div class="form-footer">
-          <button type="submit" class="btn-submit">✔ REGISTRAR NA MISSÃO</button>
-          <button type="button" class="btn-action btn-clear" onclick="limparForm()">✕ LIMPAR</button>
+          <button type="submit" class="btn-submit">
+            <i data-lucide="check-circle" class="icon-btn"></i> REGISTRAR NA MISSÃO
+          </button>
+          <button type="button" class="btn-action btn-clear" onclick="limparForm()">
+            <i data-lucide="x-circle" class="icon-btn"></i> LIMPAR
+          </button>
         </div>
 
-        <!-- Mensagem de feedback -->
         <div id="form-msg" class="form-message" style="display:none;"></div>
 
       </form>
@@ -341,7 +367,9 @@
   <!-- ==================== FOOTER ==================== -->
   <footer id="main-footer">
     <div class="footer-left">
-      <span class="footer-logo">⬡ NEXUS ORBITAL</span>
+      <span class="footer-logo">
+        <i data-lucide="satellite" class="icon-footer"></i> NEXUS ORBITAL
+      </span>
       <span class="footer-sub">FIAP Space Agency — Missão Ártemis-X © 2026</span>
     </div>
     <div class="footer-center">
@@ -354,7 +382,7 @@
     </div>
   </footer>
 
-  <!-- JS externo -->
-  <script src="js/script.js"></script>
+  <script src="/src/scripts/app.js"></script>
+  <script>lucide.createIcons();</script>
 </body>
 </html>

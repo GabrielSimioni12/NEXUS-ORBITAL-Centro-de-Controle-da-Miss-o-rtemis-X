@@ -1,0 +1,1004 @@
+/* =====================================================
+   NEXUS ORBITAL — Mission Control CSS
+   GS2026.1 — Application Development — FIAP
+   Autor: [Seu Nome] — RM: [Seu RM]
+   ===================================================== */
+
+/* ── 1. VARIÁVEIS CSS (CSS Custom Properties) ── */
+:root {
+  /* Cores dark theme */
+  --bg-primary:     #050a14;
+  --bg-secondary:   #0a1628;
+  --bg-card:        #0d1e35;
+  --bg-card-hover:  #102240;
+  --border-color:   #1a3a5c;
+  --border-glow:    #00d4ff;
+
+  /* Cores de acento */
+  --cyan:           #00d4ff;
+  --cyan-dim:       #0099bb;
+  --green:          #00ff88;
+  --orange:         #ff8c00;
+  --red:            #ff3355;
+  --purple:         #9b59ff;
+  --yellow:         #ffd700;
+
+  /* Texto */
+  --text-primary:   #e8f4ff;
+  --text-secondary: #7ba3c8;
+  --text-dim:       #3a6080;
+
+  /* Tipografia */
+  --font-display:   'Orbitron', monospace;
+  --font-body:      'Rajdhani', sans-serif;
+
+  /* Espaçamento */
+  --gap-sm:   8px;
+  --gap-md:   16px;
+  --gap-lg:   24px;
+  --gap-xl:   40px;
+
+  /* Bordas */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+
+  /* Transições */
+  --trans:    all 0.3s ease;
+}
+
+/* Light theme override */
+.light-theme {
+  --bg-primary:     #e8f0fb;
+  --bg-secondary:   #d0dff5;
+  --bg-card:        #c8d8f0;
+  --bg-card-hover:  #b8cce8;
+  --border-color:   #8aafd4;
+  --border-glow:    #005fa3;
+  --text-primary:   #071428;
+  --text-secondary: #1a3a5c;
+  --text-dim:       #4a6a8a;
+  --cyan:           #005fa3;
+  --cyan-dim:       #004a82;
+  --green:          #007a3d;
+  --orange:         #c06000;
+  --red:            #c00030;
+}
+
+/* ── 2. RESET & BASE ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: 15px;
+  line-height: 1.5;
+  min-height: 100vh;
+  /* Fundo com textura de grid espacial */
+  background-image:
+    linear-gradient(rgba(0, 212, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 212, 255, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  transition: var(--trans);
+}
+
+/* ── 3. HEADER ── */
+#main-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--gap-md);
+  padding: var(--gap-md) var(--gap-xl);
+  background-color: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: 0 2px 30px rgba(0, 212, 255, 0.08);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* Logo */
+.header-left .logo-box {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-sm);
+}
+
+.logo-icon {
+  font-size: 2rem;
+  color: var(--cyan);
+  animation: rotateSlow 10s linear infinite;
+}
+
+.logo-title {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--cyan);
+  letter-spacing: 3px;
+}
+
+.logo-sub {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* Badge da missão + countdown */
+.header-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.mission-badge {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-sm);
+}
+
+.mission-label {
+  font-size: 0.65rem;
+  background: var(--green);
+  color: var(--bg-primary);
+  padding: 2px 8px;
+  border-radius: 20px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  animation: blinkGreen 2s infinite;
+}
+
+.mission-name {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 900;
+  color: var(--text-primary);
+  letter-spacing: 4px;
+}
+
+.countdown-box {
+  text-align: center;
+}
+
+.countdown-label {
+  display: block;
+  font-size: 0.6rem;
+  color: var(--text-secondary);
+  letter-spacing: 2px;
+  margin-bottom: 4px;
+}
+
+.countdown-timer {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.cd-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--cyan);
+  min-width: 40px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 2px 6px;
+  line-height: 1;
+}
+
+.cd-unit small {
+  font-family: var(--font-body);
+  font-size: 0.55rem;
+  color: var(--text-secondary);
+  letter-spacing: 1px;
+  margin-top: 2px;
+}
+
+.cd-sep {
+  color: var(--cyan-dim);
+  font-size: 1.2rem;
+  font-weight: 700;
+  animation: blinkCyan 1s infinite;
+}
+
+/* Header direita */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-md);
+}
+
+.btn-theme {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: var(--text-secondary);
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 6px 14px;
+  cursor: pointer;
+  transition: var(--trans);
+}
+.btn-theme:hover {
+  background: var(--border-glow);
+  color: var(--bg-primary);
+  border-color: var(--border-glow);
+}
+
+.status-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 6px 16px;
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--green);
+}
+
+.status-pill.alert {
+  color: var(--red);
+  border-color: var(--red);
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--green);
+  animation: pulse 1.5s infinite;
+}
+
+.status-pill.alert .pulse-dot {
+  background: var(--red);
+}
+
+/* ── 4. MAIN ── */
+#main-content {
+  padding: var(--gap-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-xl);
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* ── 5. SECTION TITLE BAR ── */
+.section-title-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--gap-lg);
+  padding-bottom: var(--gap-sm);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.section-title-bar h2 {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: var(--cyan);
+}
+
+.data-tag {
+  font-size: 0.65rem;
+  letter-spacing: 2px;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+  padding: 3px 10px;
+  border-radius: var(--radius-sm);
+}
+
+/* ── 6. DASHBOARD GRID ── */
+.dashboard-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap-lg);
+}
+
+/* ── 7. CARDS ── */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: var(--gap-lg);
+  flex: 1 1 220px;
+  transition: var(--trans);
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  /* linha de acento no topo */
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--cyan);
+  opacity: 0.6;
+}
+
+.card:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--cyan-dim);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 212, 255, 0.12);
+}
+
+.card.alert-card {
+  border-color: var(--red);
+  box-shadow: 0 0 20px rgba(255, 51, 85, 0.2);
+}
+.card.alert-card::before {
+  background: var(--red);
+  opacity: 1;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: var(--gap-sm);
+}
+
+.card-icon {
+  font-size: 1.2rem;
+}
+
+.card-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+}
+
+.card-value {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--gap-sm);
+}
+
+.card-bar-wrap {
+  margin-bottom: 10px;
+}
+
+.card-bar {
+  background: var(--bg-secondary);
+  border-radius: 20px;
+  height: 6px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+.big-bar {
+  height: 10px;
+  margin-top: var(--gap-sm);
+}
+
+.card-bar-fill {
+  height: 100%;
+  border-radius: 20px;
+  transition: width 0.8s ease;
+}
+
+.temp-fill    { background: linear-gradient(90deg, #00d4ff, #9b59ff); }
+.energy-fill  { background: linear-gradient(90deg, #ffd700, #ff8c00); }
+.comm-fill    { background: linear-gradient(90deg, #00ff88, #00d4ff); }
+.speed-fill   { background: linear-gradient(90deg, #ff8c00, #ff3355); }
+.oxygen-fill  { background: linear-gradient(90deg, #9b59ff, #00d4ff); }
+.shield-fill  { background: linear-gradient(90deg, #00ff88, #ffd700); }
+.mission-fill { background: linear-gradient(90deg, #00d4ff, #9b59ff, #00ff88); }
+
+.card-range {
+  font-size: 0.65rem;
+  color: var(--text-dim);
+  letter-spacing: 1px;
+  display: block;
+  margin-top: 4px;
+}
+
+.card-status {
+  font-family: var(--font-display);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  padding: 3px 10px;
+  border-radius: 20px;
+  display: inline-block;
+}
+
+.card-status.ok {
+  background: rgba(0, 255, 136, 0.1);
+  color: var(--green);
+  border: 1px solid rgba(0, 255, 136, 0.3);
+}
+
+.card-status.warn {
+  background: rgba(255, 140, 0, 0.1);
+  color: var(--orange);
+  border: 1px solid rgba(255, 140, 0, 0.3);
+}
+
+.card-status.danger {
+  background: rgba(255, 51, 85, 0.1);
+  color: var(--red);
+  border: 1px solid rgba(255, 51, 85, 0.3);
+}
+
+/* ── 8. ACTION BAR ── */
+.action-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap-md);
+  margin-top: var(--gap-lg);
+}
+
+.btn-action {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  padding: 10px 20px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: var(--trans);
+  background: var(--bg-card);
+  color: var(--text-secondary);
+}
+
+.btn-alert:hover  { background: var(--red);    color: #fff; border-color: var(--red);    }
+.btn-update:hover { background: var(--cyan);   color: var(--bg-primary); border-color: var(--cyan); }
+.btn-log:hover    { background: var(--purple); color: #fff; border-color: var(--purple); }
+.btn-clear:hover  { background: var(--text-dim); color: #fff; }
+
+/* ── 9. MID ROW (article + aside) ── */
+.mid-row {
+  display: flex;
+  gap: var(--gap-lg);
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+/* ── 10. ARTICLE — Rota da missão ── */
+.card-article {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: var(--gap-lg);
+  flex: 1 1 500px;
+}
+
+.card-article h3 {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: var(--cyan);
+  margin-bottom: var(--gap-lg);
+}
+
+/* Mapa de rota */
+.route-map {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-bottom: var(--gap-lg);
+  padding: var(--gap-md) 0;
+  overflow-x: auto;
+}
+
+.route-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.node-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--cyan);
+  border: 2px solid var(--cyan);
+  box-shadow: 0 0 10px var(--cyan);
+}
+
+.node-dot.dim {
+  background: var(--bg-secondary);
+  border-color: var(--border-color);
+  box-shadow: none;
+}
+
+.node-label {
+  font-family: var(--font-display);
+  font-size: 0.6rem;
+  letter-spacing: 1px;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.route-line {
+  flex: 1;
+  height: 4px;
+  background: var(--bg-secondary);
+  border-radius: 2px;
+  position: relative;
+  min-width: 80px;
+  overflow: visible;
+}
+
+.route-line-small {
+  flex: 0.5;
+  height: 4px;
+  background: var(--bg-secondary);
+  border-radius: 2px;
+  position: relative;
+  min-width: 40px;
+}
+
+.route-progress {
+  position: absolute;
+  left: 0; top: 0;
+  height: 100%;
+  background: linear-gradient(90deg, var(--cyan), var(--purple));
+  border-radius: 2px;
+  transition: width 1s ease;
+}
+
+.route-progress-small {
+  position: absolute;
+  left: 0; top: 0;
+  height: 100%;
+  background: linear-gradient(90deg, var(--cyan), var(--purple));
+  border-radius: 2px;
+}
+
+.route-ship {
+  position: absolute;
+  top: -12px;
+  font-size: 1.2rem;
+  transform: translateX(-50%);
+  transition: left 1s ease;
+}
+
+.mission-progress-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: var(--gap-md);
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  letter-spacing: 1px;
+}
+
+.progress-percent {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--cyan);
+}
+
+/* Mission stats */
+.mission-stats {
+  display: flex;
+  gap: var(--gap-lg);
+  flex-wrap: wrap;
+  margin-top: var(--gap-lg);
+  padding-top: var(--gap-md);
+  border-top: 1px solid var(--border-color);
+}
+
+.mstat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.mstat-val {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.mstat-label {
+  font-size: 0.65rem;
+  color: var(--text-dim);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* ── 11. ASIDE — Log de eventos ── */
+.event-log-panel {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: var(--gap-lg);
+  flex: 1 1 300px;
+  max-height: 420px;
+  overflow-y: auto;
+}
+
+.event-log-panel h3 {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  letter-spacing: 3px;
+  color: var(--purple);
+  margin-bottom: var(--gap-md);
+}
+
+.log-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: var(--gap-md);
+}
+
+.log-item {
+  display: flex;
+  gap: var(--gap-sm);
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  border-left: 3px solid transparent;
+  font-size: 0.8rem;
+}
+
+.log-item.ok   { border-left-color: var(--green); background: rgba(0, 255, 136, 0.05); }
+.log-item.warn { border-left-color: var(--orange); background: rgba(255, 140, 0, 0.05); }
+.log-item.danger { border-left-color: var(--red); background: rgba(255, 51, 85, 0.05); }
+
+.log-time {
+  color: var(--text-dim);
+  font-family: monospace;
+  font-size: 0.75rem;
+  white-space: nowrap;
+}
+
+.log-msg {
+  color: var(--text-secondary);
+}
+
+/* ── 12. FORMULÁRIO ── */
+.section-form {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: var(--gap-xl);
+}
+
+.form-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap-lg);
+  margin-bottom: var(--gap-lg);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1 1 220px;
+}
+
+.form-group.full-width {
+  flex: 1 1 100%;
+}
+
+label {
+  font-family: var(--font-display);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+}
+
+input, select, textarea {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  background: var(--bg-card);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  outline: none;
+  transition: var(--trans);
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: var(--cyan);
+  box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.15);
+}
+
+input::placeholder, textarea::placeholder {
+  color: var(--text-dim);
+}
+
+select option {
+  background: var(--bg-card);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.form-footer {
+  display: flex;
+  gap: var(--gap-md);
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.btn-submit {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  padding: 14px 36px;
+  background: var(--cyan);
+  color: var(--bg-primary);
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: var(--trans);
+}
+
+.btn-submit:hover {
+  background: #00aadd;
+  box-shadow: 0 4px 20px rgba(0, 212, 255, 0.4);
+  transform: translateY(-1px);
+}
+
+/* Mensagem de feedback */
+.form-message {
+  margin-top: var(--gap-md);
+  padding: 12px 20px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  font-weight: 700;
+}
+
+.form-message.success {
+  background: rgba(0, 255, 136, 0.1);
+  border: 1px solid var(--green);
+  color: var(--green);
+}
+
+.form-message.error {
+  background: rgba(255, 51, 85, 0.1);
+  border: 1px solid var(--red);
+  color: var(--red);
+}
+
+/* ── 13. FOOTER ── */
+#main-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--gap-md);
+  padding: var(--gap-lg) var(--gap-xl);
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border-color);
+  margin-top: var(--gap-xl);
+}
+
+.footer-logo {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: var(--cyan);
+  letter-spacing: 3px;
+}
+
+.footer-sub {
+  display: block;
+  font-size: 0.65rem;
+  color: var(--text-dim);
+  letter-spacing: 1px;
+  margin-top: 2px;
+}
+
+.footer-center {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  letter-spacing: 1px;
+}
+
+.footer-status {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--green);
+  letter-spacing: 2px;
+}
+
+.footer-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+  font-size: 0.65rem;
+  color: var(--text-dim);
+  letter-spacing: 1px;
+  text-align: right;
+}
+
+/* ── 14. ANIMAÇÕES ── */
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.4; transform: scale(0.8); }
+}
+
+@keyframes blinkCyan {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.2; }
+}
+
+@keyframes blinkGreen {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.6; }
+}
+
+@keyframes rotateSlow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.card {
+  animation: slideIn 0.4s ease both;
+}
+
+/* staggered delay para cada card */
+.card:nth-child(1) { animation-delay: 0.05s; }
+.card:nth-child(2) { animation-delay: 0.10s; }
+.card:nth-child(3) { animation-delay: 0.15s; }
+.card:nth-child(4) { animation-delay: 0.20s; }
+.card:nth-child(5) { animation-delay: 0.25s; }
+.card:nth-child(6) { animation-delay: 0.30s; }
+
+/* ── 15. SCROLLBAR estilizada ── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-primary); }
+::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--cyan-dim); }
+
+/* ── 16. MEDIA QUERIES — Responsividade ── */
+
+/* Tablet */
+@media (max-width: 900px) {
+  #main-header {
+    padding: var(--gap-md);
+    justify-content: center;
+    text-align: center;
+  }
+
+  .header-left, .header-right {
+    width: 100%;
+    justify-content: center;
+  }
+
+  #main-content {
+    padding: var(--gap-lg);
+  }
+
+  .dashboard-grid {
+    gap: var(--gap-md);
+  }
+
+  .card {
+    flex: 1 1 180px;
+  }
+
+  .mission-stats {
+    gap: var(--gap-md);
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .logo-title { font-size: 0.85rem; }
+  .mission-name { font-size: 1rem; }
+
+  .countdown-timer {
+    gap: 4px;
+  }
+  .cd-unit {
+    font-size: 1rem;
+    min-width: 32px;
+  }
+
+  #main-content {
+    padding: var(--gap-md);
+    gap: var(--gap-lg);
+  }
+
+  .card {
+    flex: 1 1 100%;
+  }
+
+  .card-value {
+    font-size: 1.3rem;
+  }
+
+  .section-title-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .action-bar {
+    flex-direction: column;
+  }
+
+  .btn-action, .btn-submit {
+    width: 100%;
+    text-align: center;
+  }
+
+  .form-group {
+    flex: 1 1 100%;
+  }
+
+  #main-footer {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: var(--gap-lg);
+  }
+
+  .footer-right {
+    align-items: center;
+  }
+
+  .mid-row {
+    flex-direction: column;
+  }
+
+  .card-article, .event-log-panel {
+    flex: 1 1 100%;
+  }
+
+  .route-map {
+    overflow-x: scroll;
+    padding-bottom: var(--gap-sm);
+  }
+}

@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NEXUS ORBITAL — Missão Ártemis-X</title>
+  <link rel="stylesheet" href="/src/styles/styles.css" />
+  <!-- Google Fonts: Orbitron (display) + Rajdhani (body) -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body id="body" class="dark-theme">
+
+  <!-- ==================== HEADER ==================== -->
+  <header id="main-header">
+    <div class="header-left">
+      <div class="logo-box">
+        <span class="logo-icon">⬡</span>
+        <div>
+          <span class="logo-title">NEXUS ORBITAL</span>
+          <span class="logo-sub">Centro de Controle — FIAP Space Agency</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="header-center">
+      <div class="mission-badge">
+        <span class="mission-label">MISSÃO ATIVA</span>
+        <span class="mission-name">ÁRTEMIS-X</span>
+      </div>
+      <!-- Contador regressivo até chegada em Europa -->
+      <div class="countdown-box">
+        <span class="countdown-label">CHEGADA EM EUROPA</span>
+        <div class="countdown-timer" id="countdown">
+          <span class="cd-unit"><span id="cd-days">847</span><small>DIAS</small></span>
+          <span class="cd-sep">:</span>
+          <span class="cd-unit"><span id="cd-hours">14</span><small>HRS</small></span>
+          <span class="cd-sep">:</span>
+          <span class="cd-unit"><span id="cd-mins">32</span><small>MIN</small></span>
+          <span class="cd-sep">:</span>
+          <span class="cd-unit"><span id="cd-secs">07</span><small>SEG</small></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="header-right">
+      <!-- Botão alternância de tema -->
+      <button id="theme-toggle" class="btn-theme" onclick="toggleTheme()" title="Alternar Tema">
+        <span id="theme-icon">☀</span> TEMA
+      </button>
+      <!-- Status geral da missão -->
+      <div class="status-pill" id="global-status">
+        <span class="pulse-dot"></span>
+        <span id="status-text">NOMINAL</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== MAIN ==================== -->
+  <main id="main-content">
+
+    <!-- ===== SEÇÃO: DASHBOARD ===== -->
+    <section id="dashboard" class="section-dashboard">
+      <div class="section-title-bar">
+        <h2>⬡ PAINEL DE TELEMETRIA</h2>
+        <span class="data-tag">ATUALIZAÇÃO EM TEMPO REAL</span>
+      </div>
+
+      <!-- Cards de telemetria -->
+      <div class="dashboard-grid">
+
+        <!-- Card Temperatura -->
+        <article class="card card-temp" id="card-temp">
+          <div class="card-header">
+            <span class="card-icon">🌡</span>
+            <span class="card-label">TEMPERATURA CASCO</span>
+          </div>
+          <div class="card-value" id="temp-value">-187°C</div>
+          <div class="card-bar-wrap">
+            <div class="card-bar">
+              <div class="card-bar-fill temp-fill" id="temp-bar" style="width: 30%"></div>
+            </div>
+            <span class="card-range">-220°C → 0°C</span>
+          </div>
+          <div class="card-status ok" id="temp-status">NORMAL</div>
+        </article>
+
+        <!-- Card Energia -->
+        <article class="card card-energy" id="card-energy">
+          <div class="card-header">
+            <span class="card-icon">⚡</span>
+            <span class="card-label">NÍVEL DE ENERGIA</span>
+          </div>
+          <div class="card-value" id="energy-value">78%</div>
+          <div class="card-bar-wrap">
+            <div class="card-bar">
+              <div class="card-bar-fill energy-fill" id="energy-bar" style="width: 78%"></div>
+            </div>
+            <span class="card-range">PAINÉIS SOLARES ATIVOS</span>
+          </div>
+          <div class="card-status ok" id="energy-status">ESTÁVEL</div>
+        </article>
+
+        <!-- Card Comunicação -->
+        <article class="card card-comm" id="card-comm">
+          <div class="card-header">
+            <span class="card-icon">📡</span>
+            <span class="card-label">COMUNICAÇÃO</span>
+          </div>
+          <div class="card-value" id="comm-value">94%</div>
+          <div class="card-bar-wrap">
+            <div class="card-bar">
+              <div class="card-bar-fill comm-fill" id="comm-bar" style="width: 94%"></div>
+            </div>
+            <span class="card-range">DELAY: 43min 12s</span>
+          </div>
+          <div class="card-status ok" id="comm-status">LINK ATIVO</div>
+        </article>
+
+        <!-- Card Velocidade -->
+        <article class="card card-speed" id="card-speed">
+          <div class="card-header">
+            <span class="card-icon">🚀</span>
+            <span class="card-label">VELOCIDADE</span>
+          </div>
+          <div class="card-value" id="speed-value">47.200 km/h</div>
+          <div class="card-bar-wrap">
+            <div class="card-bar">
+              <div class="card-bar-fill speed-fill" id="speed-bar" style="width: 62%"></div>
+            </div>
+            <span class="card-range">TRAJETÓRIA HELIOCÊNTRICA</span>
+          </div>
+          <div class="card-status ok" id="speed-status">EM CURSO</div>
+        </article>
+
+        <!-- Card Oxigênio -->
+        <article class="card card-oxygen" id="card-oxygen">
+          <div class="card-header">
+            <span class="card-icon">💨</span>
+            <span class="card-label">O₂ CABINE</span>
+          </div>
+          <div class="card-value" id="oxygen-value">21.4%</div>
+          <div class="card-bar-wrap">
+            <div class="card-bar">
+              <div class="card-bar-fill oxygen-fill" id="oxygen-bar" style="width: 85%"></div>
+            </div>
+            <span class="card-range">RECICLAGEM: ATIVA</span>
+          </div>
+          <div class="card-status ok" id="oxygen-status">NORMAL</div>
+        </article>
+
+        <!-- Card Escudo -->
+        <article class="card card-shield" id="card-shield">
+          <div class="card-header">
+            <span class="card-icon">🛡</span>
+            <span class="card-label">ESCUDO RADIAÇÃO</span>
+          </div>
+          <div class="card-value" id="shield-value">ATIVO</div>
+          <div class="card-bar-wrap">
+            <div class="card-bar">
+              <div class="card-bar-fill shield-fill" id="shield-bar" style="width: 91%"></div>
+            </div>
+            <span class="card-range">PROTEÇÃO: 91%</span>
+          </div>
+          <div class="card-status ok" id="shield-status">INTEGRIDADE OK</div>
+        </article>
+
+      </div><!-- /dashboard-grid -->
+
+      <!-- Botões de ação -->
+      <div class="action-bar">
+        <button class="btn-action btn-alert" onclick="simularAlerta()">⚠ SIMULAR ALERTA</button>
+        <button class="btn-action btn-update" onclick="atualizarDados()">🔄 ATUALIZAR DADOS</button>
+        <button class="btn-action btn-log" onclick="toggleLog()">📋 EXIBIR LOG</button>
+      </div>
+    </section>
+
+    <!-- ===== CONTEÚDO CENTRAL: aside + article ===== -->
+    <div class="mid-row">
+
+      <!-- ===== ARTICLE: Mapa da missão / Progresso ===== -->
+      <article id="mission-map" class="card-article">
+        <h3>🛸 ROTA DA MISSÃO</h3>
+        <div class="route-map">
+          <div class="route-node active">
+            <span class="node-dot"></span>
+            <span class="node-label">TERRA</span>
+          </div>
+          <div class="route-line">
+            <div class="route-progress" id="route-progress" style="width: 38%"></div>
+            <span class="route-ship" id="route-ship" style="left: 38%">🚀</span>
+          </div>
+          <div class="route-node">
+            <span class="node-dot dim"></span>
+            <span class="node-label">MARTE</span>
+          </div>
+          <div class="route-line-small">
+            <div class="route-progress-small" style="width: 0%"></div>
+          </div>
+          <div class="route-node">
+            <span class="node-dot dim"></span>
+            <span class="node-label">JÚPITER</span>
+          </div>
+          <div class="route-line-small">
+            <div class="route-progress-small" style="width: 0%"></div>
+          </div>
+          <div class="route-node">
+            <span class="node-dot dim"></span>
+            <span class="node-label">EUROPA</span>
+          </div>
+        </div>
+        <div class="mission-progress-info">
+          <span>PROGRESSO TOTAL DA MISSÃO</span>
+          <span class="progress-percent" id="mission-percent">38%</span>
+        </div>
+        <div class="card-bar big-bar">
+          <div class="card-bar-fill mission-fill" id="mission-bar" style="width: 38%"></div>
+        </div>
+        <div class="mission-stats">
+          <div class="mstat">
+            <span class="mstat-val">628.730.000</span>
+            <span class="mstat-label">km percorridos</span>
+          </div>
+          <div class="mstat">
+            <span class="mstat-val">1.029.100.000</span>
+            <span class="mstat-label">km restantes</span>
+          </div>
+          <div class="mstat">
+            <span class="mstat-val">3</span>
+            <span class="mstat-label">astronautas a bordo</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- ===== ASIDE: Log de eventos ===== -->
+      <aside id="event-log" class="event-log-panel" style="display: none;">
+        <h3>📋 LOG DE EVENTOS</h3>
+        <ul class="log-list" id="log-list">
+          <li class="log-item ok">
+            <span class="log-time">08:14:02</span>
+            <span class="log-msg">Sistema inicializado. Todos os módulos OK.</span>
+          </li>
+          <li class="log-item ok">
+            <span class="log-time">09:00:00</span>
+            <span class="log-msg">Comunicação com Terra estabelecida via Deep Space Network.</span>
+          </li>
+          <li class="log-item warn">
+            <span class="log-time">11:23:41</span>
+            <span class="log-msg">Temperatura do motor 3 elevada. Resfriamento acionado.</span>
+          </li>
+          <li class="log-item ok">
+            <span class="log-time">12:05:17</span>
+            <span class="log-msg">Correção de trajetória executada com sucesso.</span>
+          </li>
+        </ul>
+        <button class="btn-action btn-clear" onclick="limparLog()">🗑 LIMPAR LOG</button>
+      </aside>
+
+    </div><!-- /mid-row -->
+
+    <!-- ===== SEÇÃO: FORMULÁRIO ===== -->
+    <section id="cadastro" class="section-form">
+      <div class="section-title-bar">
+        <h2>⬡ REGISTRO DE MÓDULO / TRIPULANTE</h2>
+        <span class="data-tag">ACESSO RESTRITO — NÍVEL 3</span>
+      </div>
+
+      <form id="mission-form" onsubmit="submitForm(event)">
+
+        <div class="form-grid">
+          <!-- Nome -->
+          <div class="form-group">
+            <label for="nome">NOME COMPLETO *</label>
+            <input type="text" id="nome" name="nome" placeholder="Ex: Dra. Ana Lima" required />
+          </div>
+
+          <!-- ID da Missão -->
+          <div class="form-group">
+            <label for="id-missao">ID DA MISSÃO *</label>
+            <input type="text" id="id-missao" name="id-missao" placeholder="Ex: AX-003" required />
+          </div>
+
+          <!-- Cargo -->
+          <div class="form-group">
+            <label for="cargo">FUNÇÃO A BORDO *</label>
+            <select id="cargo" name="cargo" required>
+              <option value="">— Selecione —</option>
+              <option value="comandante">Comandante</option>
+              <option value="piloto">Piloto</option>
+              <option value="cientista">Cientista</option>
+              <option value="engenheiro">Engenheiro de Sistemas</option>
+              <option value="medico">Médico de Bordo</option>
+              <option value="especialista">Especialista em IA</option>
+            </select>
+          </div>
+
+          <!-- Módulo -->
+          <div class="form-group">
+            <label for="modulo">MÓDULO DESIGNADO *</label>
+            <select id="modulo" name="modulo" required>
+              <option value="">— Selecione —</option>
+              <option value="alfa">Módulo Alfa — Cabine Principal</option>
+              <option value="beta">Módulo Beta — Lab Científico</option>
+              <option value="gamma">Módulo Gamma — Engenharia</option>
+              <option value="delta">Módulo Delta — Habitação</option>
+            </select>
+          </div>
+
+          <!-- Data de embarque -->
+          <div class="form-group">
+            <label for="embarque">DATA DE EMBARQUE</label>
+            <input type="date" id="embarque" name="embarque" />
+          </div>
+
+          <!-- Nível de autorização -->
+          <div class="form-group">
+            <label for="nivel">NÍVEL DE AUTORIZAÇÃO</label>
+            <input type="number" id="nivel" name="nivel" min="1" max="5" placeholder="1 a 5" />
+          </div>
+        </div>
+
+        <!-- Observações -->
+        <div class="form-group full-width">
+          <label for="obs">OBSERVAÇÕES DA MISSÃO</label>
+          <textarea id="obs" name="obs" rows="4" placeholder="Descreva equipamentos, objetivos específicos ou condições especiais..."></textarea>
+        </div>
+
+        <!-- Botão submit -->
+        <div class="form-footer">
+          <button type="submit" class="btn-submit">✔ REGISTRAR NA MISSÃO</button>
+          <button type="button" class="btn-action btn-clear" onclick="limparForm()">✕ LIMPAR</button>
+        </div>
+
+        <!-- Mensagem de feedback -->
+        <div id="form-msg" class="form-message" style="display:none;"></div>
+
+      </form>
+    </section>
+
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer id="main-footer">
+    <div class="footer-left">
+      <span class="footer-logo">⬡ NEXUS ORBITAL</span>
+      <span class="footer-sub">FIAP Space Agency — Missão Ártemis-X © 2026</span>
+    </div>
+    <div class="footer-center">
+      <span>STATUS DO SISTEMA: </span>
+      <span class="footer-status" id="footer-status">OPERACIONAL</span>
+    </div>
+    <div class="footer-right">
+      <span>Application Development — GS2026.1</span>
+      <span>Prof. Dr. Allan Roberto Molto</span>
+    </div>
+  </footer>
+
+  <!-- JS externo -->
+  <script src="js/script.js"></script>
+</body>
+</html>

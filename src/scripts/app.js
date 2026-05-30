@@ -371,13 +371,6 @@ function submitForm(event) {
     return;
   }
 
-  // Validação do formato do ID da missão (ex: AX-001)
-  var regexId = /^[A-Z]{2}-\d{3}$/;
-  if (!regexId.test(idMiss)) {
-    exibirMensagemForm('⚠ ID da missão inválido. Use o formato XX-000 (ex: AX-003).', 'error');
-    return;
-  }
-
   // Sucesso: exibe mensagem e registra no log
   var cargoTexto  = document.getElementById('cargo').options[document.getElementById('cargo').selectedIndex].text;
   var moduloTexto = document.getElementById('modulo').options[document.getElementById('modulo').selectedIndex].text;
@@ -425,4 +418,92 @@ function exibirMensagemForm(texto, tipo) {
 function limparForm() {
   document.getElementById('mission-form').reset();
   document.getElementById('form-msg').style.display = 'none';
+}
+
+
+/* ── 12. ALTERNÂNCIA DE ABAS — MAPA ORBITAL ── */
+
+/**
+ * Exibe o painel correto (rota ou europa) e atualiza as abas.
+ * @param {string} aba - 'rota' | 'europa'
+ */
+function mostrarAba(aba) {
+  // Atualiza classes dos botões de aba
+  document.getElementById('tab-rota').classList.toggle('active', aba === 'rota');
+  document.getElementById('tab-europa').classList.toggle('active', aba === 'europa');
+
+  // Exibe/oculta os painéis via display
+  document.getElementById('painel-rota').style.display   = aba === 'rota'   ? 'block' : 'none';
+  document.getElementById('painel-europa').style.display = aba === 'europa' ? 'block' : 'none';
+
+  // Re-renderiza ícones Lucide após troca de painel
+  lucide.createIcons();
+}
+
+
+/* ── 13. INFO DOS PLANETAS — MAPA ORBITAL ── */
+
+// Textos de informação para cada planeta
+var infosPlanetas = {
+  terra: '🌍 TERRA — Ponto de partida da Missão Ártemis-X. Lançamento realizado do Centro Espacial Kennedy após 8 anos de desenvolvimento. A nave carrega 3 astronautas, 2,4 toneladas de equipamentos científicos e combustível para manobras de correção ao longo da rota.',
+  marte: '🔴 MARTE — Assistência gravitacional (slingshot). A Ártemis-X usou a gravidade de Marte para aumentar a velocidade em 12.400 km/h sem consumir combustível. A manobra durou 6 horas e foi executada com precisão de 0,003 graus — reduzindo em 2 anos o tempo de viagem.',
+  jupiter: '🟠 JÚPITER — Segunda assistência gravitacional planejada. O gigante gasoso vai acelerar a nave para a órbita de Europa. Maior atenção necessária: os cinturões de radiação de Van Allen ao redor de Júpiter são os mais intensos do Sistema Solar — testam os limites do escudo da nave.',
+  europa: '🔵 EUROPA — Destino final. A nave entrará em órbita baixa e realizará 14 sobrevoos da superfície, coletando dados do oceano subterrâneo. O objetivo principal é amostrar plumas de vapor d\'água para análise de biomarcadores — possível indicativo de vida extraterrestre.',
+};
+
+/**
+ * Exibe as informações de um planeta no card abaixo do mapa SVG.
+ * Chamado via onclick nos elementos SVG.
+ * @param {string} planeta - 'terra' | 'marte' | 'jupiter' | 'europa'
+ */
+function infoOrbit(planeta) {
+  var box = document.getElementById('orbit-info');
+  if (!box) return;
+
+  // Atualiza o conteúdo e adiciona classe de destaque
+  box.textContent = infosPlanetas[planeta] || 'Informação não disponível.';
+  box.classList.add('highlight');
+
+  // Remove o destaque após 8 segundos
+  setTimeout(function () {
+    box.classList.remove('highlight');
+  }, 8000);
+}
+
+
+/* ── 14. DETALHES DE EUROPA ── */
+
+// Textos científicos para cada cartão de Europa
+var detalhesEuropa = {
+  ocean:   'O oceano de Europa pode conter mais que o dobro de água de todos os oceanos da Terra somados, estimado entre 100 e 170 km de profundidade. Fica aprisionado sob a crosta de gelo e aquecido pelo efeito de marés gravitacionais de Júpiter — criando condições ideais para sustentar vida.',
+  temp:    'A superfície pode atingir −160°C nos polos, mas o oceano subterrâneo mantém temperaturas próximas a 0°C ou acima, sustentado pelo aquecimento por maré. Essa diferença brutal faz da crosta de gelo uma barreira protetora que isola e estabiliza o ambiente aquático interno.',
+  raio:    'Com raio de 1.560 km, Europa é ligeiramente menor que a Lua da Terra. Apesar do tamanho compacto, sua densidade interna (3,013 g/cm³) sugere um núcleo rochoso envolto por uma camada espessa de água/gelo — totalizando um volume hídrico imenso sob pressão.',
+  orbital: 'Europa completa uma órbita ao redor de Júpiter em exatos 3,55 dias terrestres, a 671.100 km do planeta. Essa proximidade causa forças de maré que flexionam continuamente a crosta de gelo, gerando calor por fricção interna — o motor que mantém o oceano líquido.',
+  plumas:  'O Telescópio Hubble detectou jatos de vapor d\'água no polo sul de Europa, atingindo até 200 km de altitude. Se confirmados in situ, os objetivos da Ártemis-X incluem voar através dessas plumas e coletar amostras diretamente — sem necessidade de perfurar a crosta de gelo.',
+  vida:    'Europa reúne os três requisitos fundamentais para a vida: água líquida, fonte de energia (marés e calor interno) e compostos químicos orgânicos. O oceano em contato com o fundo rochoso pode abrigar fontes hidrotermais análogas às do fundo oceânico terrestre, onde a vida prospera sem luz solar.',
+};
+
+/**
+ * Exibe o detalhe científico do cartão de Europa clicado.
+ * @param {string} chave - Chave do detalhe
+ */
+function detalheEuropa(chave) {
+  var box = document.getElementById('europa-detalhe');
+  if (!box) return;
+
+  // Remove destaque ativo de todos os cards
+  var cards = document.querySelectorAll('.ecard');
+  cards.forEach(function (c) { c.classList.remove('active'); });
+
+  // Destaca o card clicado — encontra pelo onclick
+  var todos = document.querySelectorAll('.ecard');
+  todos.forEach(function (c) {
+    if (c.getAttribute('onclick') === "detalheEuropa('" + chave + "')") {
+      c.classList.add('active');
+    }
+  });
+
+  // Atualiza o conteúdo
+  box.textContent = detalhesEuropa[chave] || 'Informação não disponível.';
+  box.style.borderLeftColor = chave === 'vida' ? 'var(--green)' : 'var(--purple)';
 }

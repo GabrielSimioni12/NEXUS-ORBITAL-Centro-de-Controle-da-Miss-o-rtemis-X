@@ -5,13 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NEXUS ORBITAL — Missão Ártemis-X</title>
 
-
+  <!-- Favicon SVG: foguete -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23050a14'/><path d='M16 4 C16 4 22 10 22 18 L19 18 L19 22 L13 22 L13 18 L10 18 C10 10 16 4 16 4Z' fill='%2300d4ff'/><circle cx='16' cy='14' r='2.5' fill='%23050a14'/><path d='M13 22 L11 27 L16 25 L21 27 L19 22Z' fill='%239b59ff'/></svg>" />
 
   <link rel="stylesheet" href="/src/styles/styles.css" />
-
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
- 
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 </head>
 <body id="body" class="dark-theme">
@@ -20,10 +18,7 @@
   <header id="main-header">
     <div class="header-left">
       <div class="logo-box">
-        <!-- Ícone: hexágono / satélite representando a agência -->
-        <span class="logo-icon">
-          <i data-lucide="satellite" class="icon-logo"></i>
-        </span>
+        <span class="logo-icon"><i data-lucide="satellite" class="icon-logo"></i></span>
         <div>
           <span class="logo-title">NEXUS ORBITAL</span>
           <span class="logo-sub">Centro de Controle — FIAP Space Agency</span>
@@ -36,7 +31,6 @@
         <span class="mission-label">MISSÃO ATIVA</span>
         <span class="mission-name">ÁRTEMIS-X</span>
       </div>
-      <!-- Contador regressivo até chegada em Europa -->
       <div class="countdown-box">
         <span class="countdown-label">CHEGADA EM EUROPA</span>
         <div class="countdown-timer" id="countdown">
@@ -52,11 +46,9 @@
     </div>
 
     <div class="header-right">
-      <!-- Botão alternância de tema -->
       <button id="theme-toggle" class="btn-theme" onclick="toggleTheme()" title="Alternar Tema">
         <i data-lucide="sun" id="theme-icon" class="icon-btn"></i> TEMA
       </button>
-      <!-- Status geral da missão -->
       <div class="status-pill" id="global-status">
         <span class="pulse-dot"></span>
         <span id="status-text">NOMINAL</span>
@@ -70,17 +62,12 @@
     <!-- ===== SEÇÃO: DASHBOARD ===== -->
     <section id="dashboard" class="section-dashboard">
       <div class="section-title-bar">
-        <h2>
-          <i data-lucide="layout-dashboard" class="icon-section"></i>
-          PAINEL DE TELEMETRIA
-        </h2>
+        <h2><i data-lucide="layout-dashboard" class="icon-section"></i> PAINEL DE TELEMETRIA</h2>
         <span class="data-tag">ATUALIZAÇÃO EM TEMPO REAL</span>
       </div>
 
-      <!-- Cards de telemetria -->
       <div class="dashboard-grid">
 
-        <!-- Card Temperatura -->
         <article class="card card-temp" id="card-temp">
           <div class="card-header">
             <i data-lucide="thermometer" class="icon-card"></i>
@@ -88,15 +75,12 @@
           </div>
           <div class="card-value" id="temp-value">-187°C</div>
           <div class="card-bar-wrap">
-            <div class="card-bar">
-              <div class="card-bar-fill temp-fill" id="temp-bar" style="width: 30%"></div>
-            </div>
+            <div class="card-bar"><div class="card-bar-fill temp-fill" id="temp-bar" style="width:30%"></div></div>
             <span class="card-range">-220°C → 0°C</span>
           </div>
           <div class="card-status ok" id="temp-status">NORMAL</div>
         </article>
 
-        <!-- Card Energia -->
         <article class="card card-energy" id="card-energy">
           <div class="card-header">
             <i data-lucide="zap" class="icon-card"></i>
@@ -104,15 +88,12 @@
           </div>
           <div class="card-value" id="energy-value">78%</div>
           <div class="card-bar-wrap">
-            <div class="card-bar">
-              <div class="card-bar-fill energy-fill" id="energy-bar" style="width: 78%"></div>
-            </div>
+            <div class="card-bar"><div class="card-bar-fill energy-fill" id="energy-bar" style="width:78%"></div></div>
             <span class="card-range">PAINÉIS SOLARES ATIVOS</span>
           </div>
           <div class="card-status ok" id="energy-status">ESTÁVEL</div>
         </article>
 
-        <!-- Card Comunicação -->
         <article class="card card-comm" id="card-comm">
           <div class="card-header">
             <i data-lucide="radio" class="icon-card"></i>
@@ -120,15 +101,12 @@
           </div>
           <div class="card-value" id="comm-value">94%</div>
           <div class="card-bar-wrap">
-            <div class="card-bar">
-              <div class="card-bar-fill comm-fill" id="comm-bar" style="width: 94%"></div>
-            </div>
+            <div class="card-bar"><div class="card-bar-fill comm-fill" id="comm-bar" style="width:94%"></div></div>
             <span class="card-range">DELAY: 43min 12s</span>
           </div>
           <div class="card-status ok" id="comm-status">LINK ATIVO</div>
         </article>
 
-        <!-- Card Velocidade -->
         <article class="card card-speed" id="card-speed">
           <div class="card-header">
             <i data-lucide="rocket" class="icon-card"></i>
@@ -136,15 +114,12 @@
           </div>
           <div class="card-value" id="speed-value">47.200 km/h</div>
           <div class="card-bar-wrap">
-            <div class="card-bar">
-              <div class="card-bar-fill speed-fill" id="speed-bar" style="width: 62%"></div>
-            </div>
+            <div class="card-bar"><div class="card-bar-fill speed-fill" id="speed-bar" style="width:62%"></div></div>
             <span class="card-range">TRAJETÓRIA HELIOCÊNTRICA</span>
           </div>
           <div class="card-status ok" id="speed-status">EM CURSO</div>
         </article>
 
-        <!-- Card Oxigênio -->
         <article class="card card-oxygen" id="card-oxygen">
           <div class="card-header">
             <i data-lucide="wind" class="icon-card"></i>
@@ -152,15 +127,12 @@
           </div>
           <div class="card-value" id="oxygen-value">21.4%</div>
           <div class="card-bar-wrap">
-            <div class="card-bar">
-              <div class="card-bar-fill oxygen-fill" id="oxygen-bar" style="width: 85%"></div>
-            </div>
+            <div class="card-bar"><div class="card-bar-fill oxygen-fill" id="oxygen-bar" style="width:85%"></div></div>
             <span class="card-range">RECICLAGEM: ATIVA</span>
           </div>
           <div class="card-status ok" id="oxygen-status">NORMAL</div>
         </article>
 
-        <!-- Card Escudo -->
         <article class="card card-shield" id="card-shield">
           <div class="card-header">
             <i data-lucide="shield-check" class="icon-card"></i>
@@ -168,9 +140,7 @@
           </div>
           <div class="card-value" id="shield-value">ATIVO</div>
           <div class="card-bar-wrap">
-            <div class="card-bar">
-              <div class="card-bar-fill shield-fill" id="shield-bar" style="width: 91%"></div>
-            </div>
+            <div class="card-bar"><div class="card-bar-fill shield-fill" id="shield-bar" style="width:91%"></div></div>
             <span class="card-range">PROTEÇÃO: 91%</span>
           </div>
           <div class="card-status ok" id="shield-status">INTEGRIDADE OK</div>
@@ -178,37 +148,32 @@
 
       </div>
 
-      <!-- Botões de ação -->
       <div class="action-bar">
-        <button class="btn-action btn-alert" onclick="simularAlerta()">
+        <button class="btn-action btn-alert"  onclick="simularAlerta()">
           <i data-lucide="triangle-alert" class="icon-btn"></i> SIMULAR ALERTA
         </button>
         <button class="btn-action btn-update" onclick="atualizarDados()">
           <i data-lucide="refresh-cw" class="icon-btn"></i> ATUALIZAR DADOS
         </button>
-        <button class="btn-action btn-log" onclick="toggleLog()">
+        <button class="btn-action btn-log"    onclick="toggleLog()">
           <i data-lucide="scroll-text" class="icon-btn"></i> EXIBIR LOG
         </button>
       </div>
     </section>
 
-    <!-- ===== CONTEÚDO CENTRAL ===== -->
+    <!-- ===== CONTEÚDO CENTRAL: article + aside ===== -->
     <div class="mid-row">
 
-      <!-- ===== ARTICLE: Mapa da missão / Progresso ===== -->
       <article id="mission-map" class="card-article">
-        <h3>
-          <i data-lucide="navigation" class="icon-section"></i>
-          ROTA DA MISSÃO
-        </h3>
+        <h3><i data-lucide="navigation" class="icon-section"></i> ROTA DA MISSÃO</h3>
         <div class="route-map">
           <div class="route-node active">
             <span class="node-dot"></span>
             <span class="node-label">TERRA</span>
           </div>
           <div class="route-line">
-            <div class="route-progress" id="route-progress" style="width: 38%"></div>
-            <span class="route-ship" id="route-ship" style="left: 38%">
+            <div class="route-progress" id="route-progress" style="width:38%"></div>
+            <span class="route-ship" id="route-ship" style="left:38%">
               <i data-lucide="rocket" class="icon-ship"></i>
             </span>
           </div>
@@ -217,14 +182,14 @@
             <span class="node-label">MARTE</span>
           </div>
           <div class="route-line-small">
-            <div class="route-progress-small" style="width: 0%"></div>
+            <div class="route-progress-small" style="width:0%"></div>
           </div>
           <div class="route-node">
             <span class="node-dot dim"></span>
             <span class="node-label">JÚPITER</span>
           </div>
           <div class="route-line-small">
-            <div class="route-progress-small" style="width: 0%"></div>
+            <div class="route-progress-small" style="width:0%"></div>
           </div>
           <div class="route-node">
             <span class="node-dot dim"></span>
@@ -236,78 +201,370 @@
           <span class="progress-percent" id="mission-percent">38%</span>
         </div>
         <div class="card-bar big-bar">
-          <div class="card-bar-fill mission-fill" id="mission-bar" style="width: 38%"></div>
+          <div class="card-bar-fill mission-fill" id="mission-bar" style="width:38%"></div>
         </div>
         <div class="mission-stats">
-          <div class="mstat">
-            <span class="mstat-val">628.730.000</span>
-            <span class="mstat-label">km percorridos</span>
-          </div>
-          <div class="mstat">
-            <span class="mstat-val">1.029.100.000</span>
-            <span class="mstat-label">km restantes</span>
-          </div>
-          <div class="mstat">
-            <span class="mstat-val">3</span>
-            <span class="mstat-label">astronautas a bordo</span>
-          </div>
+          <div class="mstat"><span class="mstat-val">628.730.000</span><span class="mstat-label">km percorridos</span></div>
+          <div class="mstat"><span class="mstat-val">1.029.100.000</span><span class="mstat-label">km restantes</span></div>
+          <div class="mstat"><span class="mstat-val">3</span><span class="mstat-label">astronautas a bordo</span></div>
         </div>
       </article>
 
-      <!-- ===== Log de eventos ===== -->
-      <aside id="event-log" class="event-log-panel" style="display: none;">
-        <h3>
-          <i data-lucide="scroll-text" class="icon-section"></i>
-          LOG DE EVENTOS
-        </h3>
+      <aside id="event-log" class="event-log-panel" style="display:none;">
+        <h3><i data-lucide="scroll-text" class="icon-section"></i> LOG DE EVENTOS</h3>
         <ul class="log-list" id="log-list">
-          <li class="log-item ok">
-            <span class="log-time">08:14:02</span>
-            <span class="log-msg">Sistema inicializado. Todos os módulos OK.</span>
-          </li>
-          <li class="log-item ok">
-            <span class="log-time">09:00:00</span>
-            <span class="log-msg">Comunicação com Terra estabelecida via Deep Space Network.</span>
-          </li>
-          <li class="log-item warn">
-            <span class="log-time">11:23:41</span>
-            <span class="log-msg">Temperatura do motor 3 elevada. Resfriamento acionado.</span>
-          </li>
-          <li class="log-item ok">
-            <span class="log-time">12:05:17</span>
-            <span class="log-msg">Correção de trajetória executada com sucesso.</span>
-          </li>
+          <li class="log-item ok"><span class="log-time">08:14:02</span><span class="log-msg">Sistema inicializado. Todos os módulos OK.</span></li>
+          <li class="log-item ok"><span class="log-time">09:00:00</span><span class="log-msg">Comunicação com Terra estabelecida via Deep Space Network.</span></li>
+          <li class="log-item warn"><span class="log-time">11:23:41</span><span class="log-msg">Temperatura do motor 3 elevada. Resfriamento acionado.</span></li>
+          <li class="log-item ok"><span class="log-time">12:05:17</span><span class="log-msg">Correção de trajetória executada com sucesso.</span></li>
         </ul>
         <button class="btn-action btn-clear" onclick="limparLog()">
           <i data-lucide="trash-2" class="icon-btn"></i> LIMPAR LOG
         </button>
       </aside>
-
     </div>
 
-    <!-- ===== FORMULÁRIO ===== -->
+    <!-- ===== SEÇÃO: MAPA ORBITAL + EUROPA (interativo) ===== -->
+    <section id="mapa-orbital" class="section-mapa">
+      <div class="section-title-bar">
+        <h2><i data-lucide="globe" class="icon-section"></i> NAVEGAÇÃO ORBITAL — MAPA INTERATIVO</h2>
+        <span class="data-tag">DADOS SIMULADOS</span>
+      </div>
+
+      <!-- Abas -->
+      <div class="map-tabs">
+        <button class="map-tab active" id="tab-rota"   onclick="mostrarAba('rota')">
+          <i data-lucide="route" class="icon-btn"></i> ROTA DA MISSÃO
+        </button>
+        <button class="map-tab" id="tab-europa" onclick="mostrarAba('europa')">
+          <i data-lucide="circle-dot" class="icon-btn"></i> EUROPA — DESTINO
+        </button>
+      </div>
+
+      <!-- PAINEL ROTA -->
+      <div id="painel-rota" class="map-panel">
+        <svg id="map-svg" viewBox="0 0 900 460" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="sun-glow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%"   stop-color="#FCDE5A" stop-opacity=".95"/>
+              <stop offset="50%"  stop-color="#EF9F27" stop-opacity=".35"/>
+              <stop offset="100%" stop-color="#EF9F27" stop-opacity="0"/>
+            </radialGradient>
+            <radialGradient id="earth-g" cx="38%" cy="32%" r="65%">
+              <stop offset="0%"   stop-color="#5DCAA5"/>
+              <stop offset="100%" stop-color="#0F6E56"/>
+            </radialGradient>
+            <radialGradient id="mars-g" cx="38%" cy="32%" r="65%">
+              <stop offset="0%"   stop-color="#E06040"/>
+              <stop offset="100%" stop-color="#712B13"/>
+            </radialGradient>
+            <radialGradient id="jup-g" cx="50%" cy="45%" r="55%">
+              <stop offset="0%"   stop-color="#F0D080"/>
+              <stop offset="50%"  stop-color="#BA7517"/>
+              <stop offset="100%" stop-color="#633806"/>
+            </radialGradient>
+            <radialGradient id="eur-g" cx="38%" cy="32%" r="65%">
+              <stop offset="0%"   stop-color="#C8DFF5"/>
+              <stop offset="100%" stop-color="#185FA5"/>
+            </radialGradient>
+            <radialGradient id="ship-halo" cx="50%" cy="50%" r="50%">
+              <stop offset="0%"   stop-color="#EF9F27" stop-opacity=".5"/>
+              <stop offset="100%" stop-color="#EF9F27" stop-opacity="0"/>
+            </radialGradient>
+            <clipPath id="jup-clip"><circle cx="720" cy="230" r="38"/></clipPath>
+            <clipPath id="jup-moon-clip"><circle cx="782" cy="192" r="13"/></clipPath>
+            <filter id="star-glow"><feGaussianBlur stdDeviation="1" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          </defs>
+
+          <!-- Fundo estrelado -->
+          <rect width="900" height="460" fill="#030810" rx="12"/>
+          <!-- estrelas -->
+          <circle cx="60"  cy="25"  r="1"   fill="white" opacity=".8"/>
+          <circle cx="140" cy="12"  r=".7"  fill="white" opacity=".6"/>
+          <circle cx="220" cy="42"  r=".9"  fill="white" opacity=".7"/>
+          <circle cx="310" cy="18"  r=".7"  fill="white" opacity=".5"/>
+          <circle cx="390" cy="35"  r="1"   fill="white" opacity=".7"/>
+          <circle cx="480" cy="8"   r=".6"  fill="white" opacity=".5"/>
+          <circle cx="560" cy="28"  r=".9"  fill="white" opacity=".6"/>
+          <circle cx="640" cy="14"  r=".7"  fill="white" opacity=".4"/>
+          <circle cx="730" cy="38"  r=".8"  fill="white" opacity=".6"/>
+          <circle cx="820" cy="20"  r=".6"  fill="white" opacity=".4"/>
+          <circle cx="870" cy="50"  r=".9"  fill="white" opacity=".5"/>
+          <circle cx="50"  cy="400" r=".7"  fill="white" opacity=".4"/>
+          <circle cx="130" cy="430" r=".8"  fill="white" opacity=".5"/>
+          <circle cx="260" cy="445" r=".6"  fill="white" opacity=".3"/>
+          <circle cx="420" cy="435" r=".9"  fill="white" opacity=".5"/>
+          <circle cx="540" cy="450" r=".7"  fill="white" opacity=".4"/>
+          <circle cx="680" cy="420" r=".8"  fill="white" opacity=".3"/>
+          <circle cx="800" cy="440" r=".6"  fill="white" opacity=".4"/>
+          <circle cx="880" cy="410" r=".9"  fill="white" opacity=".5"/>
+          <circle cx="170" cy="200" r=".6"  fill="white" opacity=".3"/>
+          <circle cx="850" cy="300" r=".7"  fill="white" opacity=".3"/>
+          <circle cx="70"  cy="320" r=".5"  fill="white" opacity=".4"/>
+
+          <!-- Sol -->
+          <circle cx="42" cy="230" r="90" fill="url(#sun-glow)"/>
+          <circle cx="42" cy="230" r="32" fill="#FCDE5A"/>
+          <circle cx="42" cy="230" r="32" fill="none" stroke="#F9CB42" stroke-width="1.5" opacity=".5"/>
+
+          <!-- Órbitas (elipses) -->
+          <ellipse cx="42" cy="230" rx="200" ry="75"  fill="none" stroke="#1a3a5c" stroke-width="0.5" stroke-dasharray="5 5"/>
+          <ellipse cx="42" cy="230" rx="360" ry="130" fill="none" stroke="#1a3a5c" stroke-width="0.5" stroke-dasharray="5 5"/>
+          <ellipse cx="42" cy="230" rx="600" ry="200" fill="none" stroke="#1a3a5c" stroke-width="0.5" stroke-dasharray="5 5"/>
+          <!-- Órbita de Europa ao redor de Júpiter -->
+          <circle cx="720" cy="230" r="60" fill="none" stroke="#1a3a5c" stroke-width="0.5" stroke-dasharray="3 3"/>
+
+          <!-- Trajetória cumprida -->
+          <path d="M 242 173 Q 300 155 360 190 Q 400 210 440 218" fill="none" stroke="#00d4ff" stroke-width="2.5" stroke-linecap="round" opacity=".9"/>
+          <!-- Trajetória futura (tracejada) -->
+          <path d="M 440 218 Q 500 225 570 225 Q 630 224 680 228" fill="none" stroke="#9b59ff" stroke-width="1.5" stroke-dasharray="6 4" stroke-linecap="round" opacity=".6" id="traj-futura"/>
+
+          <!-- Rótulo da trajetória -->
+          <rect x="280" y="155" width="110" height="18" rx="4" fill="#050a14" opacity=".7"/>
+          <text x="335" y="167" text-anchor="middle" font-family="'Orbitron',monospace" font-size="9" fill="#00d4ff" letter-spacing="1">TRAJETÓRIA</text>
+
+          <!-- TERRA -->
+          <g id="planet-terra" style="cursor:pointer" onclick="infoOrbit('terra')">
+            <circle cx="242" cy="173" r="22" fill="url(#earth-g)"/>
+            <circle cx="242" cy="173" r="22" fill="none" stroke="#5DCAA5" stroke-width="1.2" opacity=".6"/>
+            <!-- continentes simplificados -->
+            <ellipse cx="238" cy="169" rx="7" ry="5" fill="#1D9E75" opacity=".5"/>
+            <ellipse cx="248" cy="175" rx="4" ry="6" fill="#1D9E75" opacity=".4"/>
+            <text x="242" y="150" text-anchor="middle" font-family="'Orbitron',monospace" font-size="10" font-weight="700" fill="#5DCAA5" letter-spacing="1">TERRA</text>
+            <text x="242" y="205" text-anchor="middle" font-family="'Rajdhani',sans-serif" font-size="10" fill="#3a6080">Partida • Ano 1</text>
+          </g>
+
+          <!-- MARTE -->
+          <g id="planet-marte" style="cursor:pointer" onclick="infoOrbit('marte')">
+            <circle cx="402" cy="155" r="13" fill="url(#mars-g)"/>
+            <circle cx="402" cy="155" r="13" fill="none" stroke="#D85A30" stroke-width="1" opacity=".6"/>
+            <!-- calotas polares -->
+            <ellipse cx="402" cy="145" rx="4" ry="2" fill="white" opacity=".4"/>
+            <text x="402" y="135" text-anchor="middle" font-family="'Orbitron',monospace" font-size="9" font-weight="700" fill="#D85A30" letter-spacing="1">MARTE</text>
+            <text x="402" y="180" text-anchor="middle" font-family="'Rajdhani',sans-serif" font-size="9" fill="#3a6080">Slingshot</text>
+          </g>
+
+          <!-- JÚPITER -->
+          <g id="planet-jupiter" style="cursor:pointer" onclick="infoOrbit('jupiter')">
+            <circle cx="720" cy="230" r="38" fill="url(#jup-g)"/>
+            <!-- bandas de Júpiter -->
+            <rect x="683" y="222" width="74" height="5" rx="2" fill="#633806" opacity=".5" clip-path="url(#jup-clip)"/>
+            <rect x="683" y="231" width="74" height="4" rx="2" fill="#854F0B" opacity=".35" clip-path="url(#jup-clip)"/>
+            <rect x="683" y="239" width="74" height="3" rx="1.5" fill="#633806" opacity=".3" clip-path="url(#jup-clip)"/>
+            <!-- Grande mancha vermelha -->
+            <ellipse cx="706" cy="236" rx="8" ry="5" fill="#D85A30" opacity=".55" clip-path="url(#jup-clip)"/>
+            <circle cx="720" cy="230" r="38" fill="none" stroke="#BA7517" stroke-width="1.2" opacity=".5"/>
+            <text x="720" y="200" text-anchor="middle" font-family="'Orbitron',monospace" font-size="10" font-weight="700" fill="#EF9F27" letter-spacing="1">JÚPITER</text>
+          </g>
+
+          <!-- EUROPA (lua) -->
+          <g id="planet-europa" style="cursor:pointer" onclick="infoOrbit('europa')">
+            <circle cx="782" cy="192" r="13" fill="url(#eur-g)"/>
+            <!-- rachaduras (linea) na superfície -->
+            <line x1="773" y1="190" x2="791" y2="194" stroke="#B5D4F4" stroke-width="1" opacity=".6" clip-path="url(#jup-moon-clip)"/>
+            <line x1="776" y1="186" x2="782" y2="198" stroke="#B5D4F4" stroke-width=".8" opacity=".5" clip-path="url(#jup-moon-clip)"/>
+            <circle cx="782" cy="192" r="13" fill="none" stroke="#3B8BD4" stroke-width="1.2" opacity=".8"/>
+            <text x="820" y="186" text-anchor="start" font-family="'Orbitron',monospace" font-size="9" font-weight="700" fill="#3B8BD4" letter-spacing="1">EUROPA</text>
+            <text x="820" y="198" text-anchor="start" font-family="'Rajdhani',sans-serif" font-size="9" fill="#3a6080">Destino final</text>
+          </g>
+
+          <!-- NAVE (posição atual animada) -->
+          <g id="nave-grupo">
+            <circle cx="440" cy="218" r="18" fill="url(#ship-halo)"/>
+            <circle cx="440" cy="218" r="10" fill="#EF9F27" opacity=".18" id="halo-ext"/>
+            <circle cx="440" cy="218" r="5"  fill="#EF9F27" opacity=".95" stroke="#FCDE5A" stroke-width="1.2" id="nave-dot"/>
+            <text x="440" y="246" text-anchor="middle" font-family="'Orbitron',monospace" font-size="9" font-weight="700" fill="#EF9F27" letter-spacing="2">ÁRTEMIS-X</text>
+            <text x="440" y="257" text-anchor="middle" font-family="'Rajdhani',sans-serif" font-size="9" fill="#7ba3c8">posição atual</text>
+          </g>
+
+          <!-- Barra de progresso embutida -->
+          <rect x="260" y="408" width="380" height="22" rx="11" fill="#0a1628" stroke="#1a3a5c" stroke-width="0.5"/>
+          <rect x="260" y="408" width="144" height="22" rx="11" fill="#00d4ff" opacity=".7"/>
+          <text x="450" y="423" text-anchor="middle" font-family="'Rajdhani',sans-serif" font-size="11" fill="#7ba3c8" letter-spacing="1">38% CONCLUÍDO — 847 DIAS RESTANTES</text>
+
+          <!-- Stats -->
+          <text x="260" y="448" font-family="'Rajdhani',sans-serif" font-size="11" fill="#3a6080">628.730.000 km percorridos</text>
+          <text x="640" y="448" text-anchor="end" font-family="'Rajdhani',sans-serif" font-size="11" fill="#3a6080">Velocidade: 47.200 km/h</text>
+
+        </svg>
+
+        <!-- Card de info do planeta clicado -->
+        <div id="orbit-info" class="orbit-info-box">
+          <i data-lucide="mouse-pointer-click" class="icon-btn" style="margin-right:6px"></i>
+          Clique em qualquer planeta para ver informações da etapa da missão.
+        </div>
+      </div>
+
+      <!-- PAINEL EUROPA -->
+      <div id="painel-europa" class="map-panel" style="display:none;">
+        <div class="europa-layout">
+
+          <!-- SVG do globo de Europa -->
+          <div class="europa-globe-wrap">
+            <svg viewBox="0 0 440 440" xmlns="http://www.w3.org/2000/svg" id="europa-globe">
+              <defs>
+                <radialGradient id="space2" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#0C1A2E"/>
+                  <stop offset="100%" stop-color="#040810"/>
+                </radialGradient>
+                <radialGradient id="globe2" cx="40%" cy="35%" r="62%">
+                  <stop offset="0%"   stop-color="#D4E9F7"/>
+                  <stop offset="30%"  stop-color="#85B7EB"/>
+                  <stop offset="70%"  stop-color="#185FA5"/>
+                  <stop offset="100%" stop-color="#042C53"/>
+                </radialGradient>
+                <radialGradient id="ice-light" cx="36%" cy="28%" r="42%">
+                  <stop offset="0%"   stop-color="white" stop-opacity=".65"/>
+                  <stop offset="100%" stop-color="white" stop-opacity="0"/>
+                </radialGradient>
+                <radialGradient id="ocean-sub" cx="50%" cy="60%" r="50%">
+                  <stop offset="0%"   stop-color="#1D9E75" stop-opacity=".45"/>
+                  <stop offset="100%" stop-color="#1D9E75" stop-opacity="0"/>
+                </radialGradient>
+                <radialGradient id="shadow2" cx="78%" cy="65%" r="55%">
+                  <stop offset="0%"   stop-color="#010508" stop-opacity=".75"/>
+                  <stop offset="100%" stop-color="#010508" stop-opacity="0"/>
+                </radialGradient>
+                <radialGradient id="jup-glow" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%"   stop-color="#E8C97A" stop-opacity=".28"/>
+                  <stop offset="100%" stop-color="#E8C97A" stop-opacity="0"/>
+                </radialGradient>
+                <clipPath id="gc"><circle cx="220" cy="220" r="168"/></clipPath>
+                <clipPath id="plume-c"><rect x="140" y="60" width="160" height="160"/></clipPath>
+              </defs>
+
+              <rect width="440" height="440" fill="url(#space2)" rx="12"/>
+
+              <!-- estrelas -->
+              <circle cx="30"  cy="30"  r=".8" fill="white" opacity=".7"/>
+              <circle cx="80"  cy="60"  r=".6" fill="white" opacity=".5"/>
+              <circle cx="20"  cy="130" r=".7" fill="white" opacity=".6"/>
+              <circle cx="40"  cy="360" r=".7" fill="white" opacity=".4"/>
+              <circle cx="390" cy="40"  r=".8" fill="white" opacity=".6"/>
+              <circle cx="410" cy="130" r=".6" fill="white" opacity=".5"/>
+              <circle cx="400" cy="300" r=".7" fill="white" opacity=".4"/>
+              <circle cx="420" cy="400" r=".8" fill="white" opacity=".3"/>
+              <circle cx="100" cy="410" r=".7" fill="white" opacity=".4"/>
+
+              <!-- Brilho de Júpiter ao fundo -->
+              <circle cx="380" cy="220" r="220" fill="url(#jup-glow)"/>
+              <circle cx="380" cy="220" r="70"  fill="#E8C97A" opacity=".06"/>
+
+              <!-- Globo base -->
+              <circle cx="220" cy="220" r="168" fill="url(#globe2)"/>
+
+              <!-- Oceano subterrâneo brilhando -->
+              <circle cx="220" cy="260" r="120" fill="url(#ocean-sub)"/>
+
+              <!-- Crostas e fissuras (linea) -->
+              <g clip-path="url(#gc)">
+                <!-- linea principais animadas -->
+                <path class="crack-line" d="M90 175 Q135 195 170 218 Q200 238 248 232 Q278 228 312 244" fill="none" stroke="#BA7517" stroke-width="3" opacity=".72"/>
+                <path class="crack-line" d="M130 142 Q165 172 185 200 Q198 220 215 248 Q228 272 240 300" fill="none" stroke="#993C1D" stroke-width="2.2" opacity=".65" style="animation-delay:.9s"/>
+                <path class="crack-line" d="M170 118 Q196 150 208 180 Q218 206 223 240" fill="none" stroke="#BA7517" stroke-width="1.8" opacity=".55" style="animation-delay:1.6s"/>
+                <!-- secundárias -->
+                <path d="M248 232 Q268 220 295 226 Q318 232 340 220" fill="none" stroke="#854F0B" stroke-width="1.4" opacity=".5"/>
+                <path d="M185 200 Q198 194 210 200 Q222 206 235 198" fill="none" stroke="#854F0B" stroke-width="1.2" opacity=".42"/>
+                <path d="M152 250 Q174 242 190 252 Q208 262 228 255" fill="none" stroke="#633806" stroke-width="1.1" opacity=".38"/>
+                <path d="M108 248 Q132 237 148 248 Q164 258 180 250" fill="none" stroke="#854F0B" stroke-width=".9" opacity=".32"/>
+                <path d="M270 166 Q288 172 305 166 Q322 160 342 166" fill="none" stroke="#854F0B" stroke-width="1.2" opacity=".42"/>
+                <path d="M295 110 Q305 130 310 150 Q315 168 310 190" fill="none" stroke="#993C1D" stroke-width="1" opacity=".35"/>
+                <!-- reflexos de gelo brancos -->
+                <path d="M90 175 Q135 197 170 220 Q200 240 248 233" fill="none" stroke="white" stroke-width=".7" opacity=".28"/>
+                <path d="M130 142 Q165 174 185 202 Q198 222 215 250" fill="none" stroke="white" stroke-width=".5" opacity=".22"/>
+                <!-- terreno irregular do gelo -->
+                <ellipse cx="280" cy="145" rx="30" ry="12" fill="#85B7EB" opacity=".18"/>
+                <ellipse cx="155" cy="290" rx="22" ry="10" fill="#85B7EB" opacity=".15"/>
+              </g>
+
+              <!-- Destaque de gelo (iluminação) -->
+              <circle cx="220" cy="220" r="168" fill="url(#ice-light)"/>
+
+              <!-- Sombra (terminador) -->
+              <circle cx="220" cy="220" r="168" fill="url(#shadow2)"/>
+
+              <!-- Borda do globo -->
+              <circle cx="220" cy="220" r="168" fill="none" stroke="#3B8BD4" stroke-width="2" opacity=".45"/>
+              <circle cx="220" cy="220" r="168" fill="none" stroke="white" stroke-width=".6" opacity=".18"/>
+
+              <!-- Plumas de vapor (polo sul) -->
+              <g clip-path="url(#plume-c)">
+                <path class="plume-anim" d="M195 388 Q190 340 185 308 Q182 290 180 272" fill="none" stroke="#B5D4F4" stroke-width="3.5" stroke-linecap="round" opacity=".65"/>
+                <path class="plume-anim" d="M220 388 Q218 345 216 318 Q215 300 214 282" fill="none" stroke="#B5D4F4" stroke-width="5"   stroke-linecap="round" opacity=".75" style="animation-delay:1.3s"/>
+                <path class="plume-anim" d="M245 388 Q248 342 250 315 Q252 298 255 278" fill="none" stroke="#B5D4F4" stroke-width="2.8" stroke-linecap="round" opacity=".55" style="animation-delay:2.6s"/>
+                <path class="plume-anim" d="M270 388 Q274 350 276 325 Q278 310 282 294" fill="none" stroke="#B5D4F4" stroke-width="2"   stroke-linecap="round" opacity=".4"  style="animation-delay:1.8s"/>
+              </g>
+
+            </svg>
+          </div>
+
+          <!-- Painel direito: cards + detalhe -->
+          <div class="europa-info-panel">
+            <h3 class="europa-title">
+              <i data-lucide="circle-dot" class="icon-section"></i>
+              EUROPA
+            </h3>
+            <p class="europa-sub">Lua de Júpiter — 671.100 km de distância orbital</p>
+
+            <div class="europa-cards" id="europa-cards">
+              <div class="ecard" onclick="detalheEuropa('ocean')">
+                <i data-lucide="droplets" class="ecard-icon"></i>
+                <span class="ecard-val">100 km</span>
+                <span class="ecard-label">Profundidade do oceano</span>
+              </div>
+              <div class="ecard" onclick="detalheEuropa('temp')">
+                <i data-lucide="thermometer-snowflake" class="ecard-icon"></i>
+                <span class="ecard-val">−160°C</span>
+                <span class="ecard-label">Temperatura sup.</span>
+              </div>
+              <div class="ecard" onclick="detalheEuropa('raio')">
+                <i data-lucide="circle" class="ecard-icon"></i>
+                <span class="ecard-val">1.560 km</span>
+                <span class="ecard-label">Raio</span>
+              </div>
+              <div class="ecard" onclick="detalheEuropa('orbital')">
+                <i data-lucide="clock" class="ecard-icon"></i>
+                <span class="ecard-val">3,55 dias</span>
+                <span class="ecard-label">Período orbital</span>
+              </div>
+              <div class="ecard" onclick="detalheEuropa('plumas')">
+                <i data-lucide="wind" class="ecard-icon"></i>
+                <span class="ecard-val">200 km</span>
+                <span class="ecard-label">Altura das plumas</span>
+              </div>
+              <div class="ecard ecard-destaque" onclick="detalheEuropa('vida')">
+                <i data-lucide="dna" class="ecard-icon"></i>
+                <span class="ecard-val">ALTA</span>
+                <span class="ecard-label">Potencial de vida</span>
+              </div>
+            </div>
+
+            <div id="europa-detalhe" class="europa-detalhe">
+              <i data-lucide="hand-pointer" class="icon-btn" style="margin-right:6px;opacity:.5"></i>
+              Clique em um dos cartões para ver detalhes científicos.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SEÇÃO: FORMULÁRIO ===== -->
     <section id="cadastro" class="section-form">
       <div class="section-title-bar">
-        <h2>
-          <i data-lucide="user-plus" class="icon-section"></i>
-          REGISTRO DE MÓDULO / TRIPULANTE
-        </h2>
+        <h2><i data-lucide="user-plus" class="icon-section"></i> REGISTRO DE MÓDULO / TRIPULANTE</h2>
         <span class="data-tag">ACESSO RESTRITO — NÍVEL 3</span>
       </div>
 
       <form id="mission-form" onsubmit="submitForm(event)">
-
         <div class="form-grid">
           <div class="form-group">
             <label for="nome">NOME COMPLETO *</label>
             <input type="text" id="nome" name="nome" placeholder="Ex: Dra. Ana Lima" required />
           </div>
-
           <div class="form-group">
             <label for="id-missao">ID DA MISSÃO *</label>
-            <input type="text" id="id-missao" name="id-missao" placeholder="Ex: AX-003" required />
+            <input type="text" id="id-missao" name="id-missao" placeholder="Ex: AX-003 ou qualquer código" required />
           </div>
-
           <div class="form-group">
             <label for="cargo">FUNÇÃO A BORDO *</label>
             <select id="cargo" name="cargo" required>
@@ -320,7 +577,6 @@
               <option value="especialista">Especialista em IA</option>
             </select>
           </div>
-
           <div class="form-group">
             <label for="modulo">MÓDULO DESIGNADO *</label>
             <select id="modulo" name="modulo" required>
@@ -331,12 +587,10 @@
               <option value="delta">Módulo Delta — Habitação</option>
             </select>
           </div>
-
           <div class="form-group">
             <label for="embarque">DATA DE EMBARQUE</label>
             <input type="date" id="embarque" name="embarque" />
           </div>
-
           <div class="form-group">
             <label for="nivel">NÍVEL DE AUTORIZAÇÃO</label>
             <input type="number" id="nivel" name="nivel" min="1" max="5" placeholder="1 a 5" />
@@ -358,7 +612,6 @@
         </div>
 
         <div id="form-msg" class="form-message" style="display:none;"></div>
-
       </form>
     </section>
 
@@ -367,9 +620,7 @@
   <!-- ==================== FOOTER ==================== -->
   <footer id="main-footer">
     <div class="footer-left">
-      <span class="footer-logo">
-        <i data-lucide="satellite" class="icon-footer"></i> NEXUS ORBITAL
-      </span>
+      <span class="footer-logo"><i data-lucide="satellite" class="icon-footer"></i> NEXUS ORBITAL</span>
       <span class="footer-sub">FIAP Space Agency — Missão Ártemis-X © 2026</span>
     </div>
     <div class="footer-center">
